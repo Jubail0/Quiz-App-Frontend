@@ -10,19 +10,24 @@ import getQuestionsApi from '../API/getQuestions';
 const Main = () => {
   const dispatch = useDispatch()
   const navigate = useNavigate()
-  const inputRef = useRef(null)
 
 
-  const startQuiz = async (username)=>{
-   const success = await userApi(dispatch,username)
+  const [userName, setUsername]=React.useState("")
+
+
+  const startQuiz = async ()=>{
+  
+   const success = await userApi(dispatch,userName)
    if(success){
     navigate('/quiz')
     getQuestionsApi(dispatch)
+    setUsername("")
    }
     
   
   }
 
+   
  
 
 
@@ -55,15 +60,23 @@ const Main = () => {
         </Typography>
 
         <Box 
-        mt={8}
+       mt={8}
+       sx={{
+        display:'flex',
+        flexDirection:'column',
+        alignItems:'center',
+        gap:'1rem'
+
+       }}
        >
           
           <input 
           id='userName' 
           type="text"
           placeholder='username'
-          ref={inputRef}
-          name="username"
+          value={userName}
+          onChange={(e)=>{setUsername(e.target.value)}}
+         
           />
 
          
@@ -75,7 +88,7 @@ const Main = () => {
           fontSize:'1rem'
           }}
           size="large"
-          onClick={()=>startQuiz(inputRef.current.value)}
+          onClick={startQuiz}
           
           >
             Start Quiz
