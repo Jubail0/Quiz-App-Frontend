@@ -14,7 +14,7 @@ const Questions = ({currentPage,selectedValue, setSelectedValue}) => {
     
     useEffect(() => {
         if(userId){
-            dispatch(questionsSolvedByUser({question:questions[currentPage].question, selectedValue}))
+            dispatch(questionsSolvedByUser({question:questions[currentPage]?.question, selectedValue}))
         }
     
     }, [selectedValue])
@@ -32,13 +32,13 @@ const Questions = ({currentPage,selectedValue, setSelectedValue}) => {
     <Box> 
 
      <Typography variant='h5' sx={{ fontSize: {  xs: "1.2rem", md: "1.6rem" }}}>
-      {questions[currentPage].question}
+      {questions[currentPage]?.question}
      </Typography>
 
      <Options 
      selectedValue={selectedValue}
      setSelectedValue={setSelectedValue} 
-     options = {questions[currentPage].options}
+     options = {questions[currentPage]?.options}
      previousAnswer={previousAnswer}
      setPreviousAnswer={setPreviousAnswer}
      />
