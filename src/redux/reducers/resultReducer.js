@@ -54,15 +54,15 @@ const resultSlice = createSlice ({
 
         // restart quiz
         reset_result:(state)=>{
-        state.loading = false
-        state.result=null,
-        state.error=false,
-        state.errorMessage=null,
+        state.loading = false;
+        state.result=null;
+        state.error=false;
+        state.errorMessage=null;
        
-        state.loading2=false,
-        state.allResult=[],
-        state.error2=false,
-        state.errorMessage2=null
+        state.loading2=false;
+        state.allResult=[];
+        state.error2=false;
+        state.errorMessage2=null;
         }
 
     }
