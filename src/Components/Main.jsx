@@ -13,16 +13,14 @@ const Main = () => {
   const inputRef = useRef(null)
 
 
-  const startQuiz = async ()=>{
-    
-  if(inputRef.current.value){
-   const success = await userApi(dispatch,inputRef.current.value)
+  const startQuiz = async (username)=>{
+   const success = await userApi(dispatch,username)
    if(success){
     navigate('/quiz')
     getQuestionsApi(dispatch)
    }
     
-  }
+  
   }
 
  
@@ -77,7 +75,7 @@ const Main = () => {
           fontSize:'1rem'
           }}
           size="large"
-          onClick={startQuiz}
+          onClick={()=>startQuiz(inputRef.current.value)}
           
           >
             Start Quiz
